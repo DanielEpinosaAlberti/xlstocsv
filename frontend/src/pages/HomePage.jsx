@@ -4,6 +4,7 @@ import NormalizationOptions from '../components/NormalizationOptions';
 import ColumnRulesEditor from '../components/ColumnRulesEditor';
 import DataPreview from '../components/DataPreview';
 import ResultCard from '../components/ResultCard';
+import ThemeToggle from '../components/ThemeToggle';
 import { analyzeFile, uploadFile } from '../services/api';
 
 const DEFAULT_OPTIONS = {
@@ -101,6 +102,7 @@ function HomePage() {
         <span className="logo-icon">📊</span>
         <h1>XLS to CSV</h1>
         <span className="badge">Normalizer</span>
+        <ThemeToggle />
       </header>
 
       <main className="main-content">
