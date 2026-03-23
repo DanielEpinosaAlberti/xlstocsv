@@ -42,10 +42,10 @@ function FileUploader({ file, onFileChange, onRemove }) {
         />
         <div className="dropzone-icon">📄</div>
         <div className="dropzone-title">
-          Arrastra tu archivo aquí o haz clic para seleccionar
+          Drag your file here or click to browse
         </div>
         <div className="dropzone-subtitle">
-          Formatos aceptados: .xls, .xlsx — Máx. 10 MB
+          Accepted formats: .xls, .xlsx — Max. 10 MB
         </div>
       </div>
 
@@ -56,7 +56,7 @@ function FileUploader({ file, onFileChange, onRemove }) {
             <div className="file-name">{file.name}</div>
             <div className="file-size">{formatSize(file.size)}</div>
           </div>
-          <button className="remove-btn" onClick={onRemove} title="Quitar archivo">✕</button>
+          <button className="remove-btn" onClick={onRemove} title="Remove file">✕</button>
         </div>
       )}
     </div>

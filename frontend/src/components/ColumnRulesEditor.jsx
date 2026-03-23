@@ -1,12 +1,12 @@
 import React from 'react';
 
 const AVAILABLE_RULES = [
-  { id: 'removeAccents', label: 'Quitar tildes', icon: 'Â→A' },
-  { id: 'trimLowercase', label: 'Minúsculas', icon: 'a↓' },
-  { id: 'uppercase', label: 'Mayúsculas', icon: 'A↑' },
-  { id: 'standardizeDates', label: 'Fechas ISO', icon: '📅' },
-  { id: 'normalizeNumbers', label: 'Números', icon: '#' },
-  { id: 'none', label: 'Sin cambios', icon: '—' },
+  { id: 'removeAccents', label: 'Remove accents', icon: 'Â→A' },
+  { id: 'trimLowercase', label: 'Lowercase', icon: 'a↓' },
+  { id: 'uppercase', label: 'Uppercase', icon: 'A↑' },
+  { id: 'standardizeDates', label: 'ISO dates', icon: '📅' },
+  { id: 'normalizeNumbers', label: 'Numbers', icon: '#' },
+  { id: 'none', label: 'No changes', icon: '—' },
 ];
 
 function ColumnRulesEditor({ headers, sampleRows, columnRules, onColumnRulesChange }) {
@@ -43,18 +43,18 @@ function ColumnRulesEditor({ headers, sampleRows, columnRules, onColumnRulesChan
   return (
     <div>
       <div className="column-rules-presets">
-        <span className="preset-label">Aplicar a todas:</span>
+        <span className="preset-label">Apply to all:</span>
         <button className="preset-btn" onClick={() => applyPresetToAll(['removeAccents', 'trimLowercase'])}>
-          Texto limpio
+          Clean text
         </button>
         <button className="preset-btn" onClick={() => applyPresetToAll(['standardizeDates'])}>
-          Solo fechas
+          Dates only
         </button>
         <button className="preset-btn" onClick={() => applyPresetToAll(['normalizeNumbers'])}>
-          Solo números
+          Numbers only
         </button>
         <button className="preset-btn" onClick={() => applyPresetToAll([])}>
-          Limpiar todo
+          Clear all
         </button>
       </div>
 
@@ -62,9 +62,9 @@ function ColumnRulesEditor({ headers, sampleRows, columnRules, onColumnRulesChan
         <table className="column-rules-table">
           <thead>
             <tr>
-              <th className="col-name-th">Columna</th>
-              <th className="col-sample-th">Muestra</th>
-              <th className="col-rules-th">Reglas</th>
+              <th className="col-name-th">Column</th>
+              <th className="col-sample-th">Sample</th>
+              <th className="col-rules-th">Rules</th>
             </tr>
           </thead>
           <tbody>

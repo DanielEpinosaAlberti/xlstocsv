@@ -8,13 +8,13 @@ function DataPreview({ headers, sampleRows, totalRows }) {
     <div className="card preview-card">
       <div className="card-header">
         <span className="icon">👁️</span>
-        Vista previa de datos
-        <span className="preview-badge">{displayRows.length} de {totalRows} filas</span>
+        Data preview
+        <span className="preview-badge">{displayRows.length} of {totalRows} rows</span>
         <button
           className="preview-toggle-btn"
           onClick={() => setExpanded(prev => !prev)}
         >
-          {expanded ? '▲ Ocultar' : '▼ Mostrar'}
+          {expanded ? '▲ Hide' : '▼ Show'}
         </button>
       </div>
       {expanded && (
@@ -41,7 +41,7 @@ function DataPreview({ headers, sampleRows, totalRows }) {
 
                     return (
                       <td key={h} className={`preview-cell preview-cell-${cellType}`} title={display}>
-                        {display || <span className="preview-empty">vacío</span>}
+                        {display || <span className="preview-empty">empty</span>}
                       </td>
                     );
                   })}
@@ -51,7 +51,7 @@ function DataPreview({ headers, sampleRows, totalRows }) {
           </table>
           {totalRows > displayRows.length && (
             <div className="preview-footer">
-              +{totalRows - displayRows.length} filas más no mostradas
+              +{totalRows - displayRows.length} more rows not shown
             </div>
           )}
         </div>

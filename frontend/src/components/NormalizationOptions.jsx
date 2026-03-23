@@ -3,33 +3,33 @@ import React from 'react';
 const OPTIONS_CONFIG = [
   {
     key: 'removeAccents',
-    label: 'Eliminar tildes y acentos',
-    description: 'Convierte caracteres acentuados a su equivalente sin tilde',
+    label: 'Remove accents',
+    description: 'Converts accented characters to their unaccented equivalent',
     example: 'José García → jose garcia',
   },
   {
     key: 'normalizeHeaders',
-    label: 'Normalizar encabezados',
-    description: 'Convierte los nombres de columna a formato snake_case',
-    example: 'Nombre Completo → nombre_completo',
+    label: 'Normalize headers',
+    description: 'Converts column names to snake_case format',
+    example: 'Full Name → full_name',
   },
   {
     key: 'standardizeDates',
-    label: 'Estandarizar fechas',
-    description: 'Convierte formatos de fecha al estándar ISO',
+    label: 'Standardize dates',
+    description: 'Converts date formats to the ISO standard',
     example: '25/03/2026 → 2026-03-25',
   },
   {
     key: 'normalizeNumbers',
-    label: 'Normalizar números',
-    description: 'Convierte formato numérico español al internacional',
+    label: 'Normalize numbers',
+    description: 'Converts Spanish number format to international standard',
     example: '1.234,56 → 1234.56',
   },
   {
     key: 'trimLowercase',
-    label: 'Limpiar texto (trim + minúsculas)',
-    description: 'Elimina espacios extra y convierte a minúsculas',
-    example: '"  HOLA  " → "hola"',
+    label: 'Clean text (trim + lowercase)',
+    description: 'Removes extra spaces and converts to lowercase',
+    example: '"  HELLO  " → "hello"',
   },
 ];
 

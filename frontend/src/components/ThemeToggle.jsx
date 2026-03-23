@@ -16,8 +16,8 @@ function ThemeToggle() {
     <button
       className="theme-toggle-btn"
       onClick={() => setDark(prev => !prev)}
-      title={dark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
-      aria-label={dark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
+      title={dark ? 'Switch to light theme' : 'Switch to dark theme'}
+      aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
     >
       {dark ? '☀️' : '🌙'}
     </button>

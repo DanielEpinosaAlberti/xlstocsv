@@ -1,243 +1,284 @@
 # 📊 XLS to CSV Normalizer
 
-Convierte archivos **.xls / .xlsx a CSV limpio y listo para bases de datos**, aplicando normalización automática de datos.
+A full-stack web application that converts Excel files (`.xls`, `.xlsx`) into **clean, normalized CSV** files ready for database imports, ETL pipelines, and data processing.
+
+Upload a spreadsheet, configure normalization rules globally or per column, preview the transformed data, and download the result — all from a modern, responsive UI with dark mode support.
 
 ---
 
-## 🚀 Demo (local)
+## ✨ Features
 
-1. Ejecuta backend y frontend
-2. Abre: http://localhost:5173
-3. Sube un Excel
-4. Descarga el CSV normalizado
-
----
-
-## 🎯 Objetivo del proyecto
-
-Este proyecto nace como una herramienta para:
-
-* Preparar datos para bases de datos (ETL básico)
-* Limpiar inconsistencias comunes en Excel
-* Automatizar tareas repetitivas de transformación
+- **Drag & drop** file upload with support for `.xls` and `.xlsx` (up to 10 MB)
+- **Global normalization options** — toggle on/off individually:
+  - Remove accents (`José García → jose garcia`)
+  - Normalize headers to `snake_case` (`Full Name → full_name`)
+  - Standardize dates to ISO format (`25/03/2026 → 2026-03-25`)
+  - Normalize numbers from Spanish to international format (`1.234,56 → 1234.56`)
+  - Clean text — trim whitespace and convert to lowercase
+- **Per-column rules** — override global settings on specific columns with granular control (lowercase, uppercase, dates, numbers, accents, or no changes)
+- **Presets** — apply common rule combinations to all columns at once (Clean text, Dates only, Numbers only)
+- **Live data preview** — inspect the first 10 rows of normalized output before downloading
+- **Dark / Light theme** — toggleable with system preference detection and `localStorage` persistence
+- **Auto-scroll** — result card appears at the top of the page after conversion
 
 ---
 
-## ⚙️ Características
-
-### ✅ Normalización automática
-
-* Eliminación de tildes (`José → jose`)
-* Conversión de encabezados (`Nombre Completo → nombre_completo`)
-* Formato de fechas estándar (`YYYY-MM-DD`)
-* Normalización de números (`1.234,56 → 1234.56`)
-* Limpieza de strings (trim, lowercase)
-
----
-
-### 📂 Soporte de archivos
-
-* `.xls`
-* `.xlsx`
-
----
-
-### 📤 Salida
-
-* Archivo `.csv` listo para:
-
-  * PostgreSQL
-  * MySQL
-  * Excel
-  * pipelines ETL
-
----
-
-## 🧱 Stack tecnológico
+## 🛠️ Tech Stack
 
 ### Backend
 
-* Node.js
-* Express
-* xlsx
-* csv-writer
+| Package | Purpose |
+|---------|---------|
+| **Node.js** + **Express** | HTTP server and REST API |
+| **multer** | Multipart file upload handling |
+| **xlsx** | Excel file parsing |
+| **csv-writer** | CSV generation |
+| **cors** | Cross-origin resource sharing |
 
 ### Frontend
 
-* React
-* Vite
-* Axios
+| Package | Purpose |
+|---------|---------|
+| **React 18** | UI framework |
+| **Vite 5** | Dev server and build tool |
+| **Axios** | HTTP client |
 
 ---
 
-## 📁 Estructura del proyecto
+## 📁 Project Structure
 
 ```
-xls-to-csv-app/
-│
+xlstocsv/
 ├── backend/
 │   ├── src/
+│   │   ├── index.js                  # Express entry point
 │   │   ├── controllers/
+│   │   │   └── convertController.js  # Request handlers (analyze, convert)
 │   │   ├── services/
+│   │   │   └── conversionService.js  # Excel parsing & CSV generation logic
 │   │   ├── utils/
+│   │   │   └── normalizer.js         # Normalization functions
 │   │   ├── routes/
+│   │   │   └── convertRoutes.js      # API route definitions
 │   │   └── middlewares/
-│   ├── uploads/
-│   ├── outputs/
+│   │       └── uploadMiddleware.js   # Multer config (disk storage, file filter)
+│   ├── uploads/                      # Temporary uploaded files
+│   ├── outputs/                      # Generated CSV files
+│   └── package.json
 │
 ├── frontend/
 │   ├── src/
+│   │   ├── App.jsx                   # Root component
+│   │   ├── main.jsx                  # React entry point
+│   │   ├── styles.css                # Full stylesheet (light + dark themes)
 │   │   ├── components/
+│   │   │   ├── FileUploader.jsx      # Drag & drop upload zone
+│   │   │   ├── NormalizationOptions.jsx  # Global toggle switches
+│   │   │   ├── ColumnRulesEditor.jsx # Per-column rule chips & presets
+│   │   │   ├── DataPreview.jsx       # Post-conversion data table
+│   │   │   ├── ResultCard.jsx        # Success card with download link
+│   │   │   └── ThemeToggle.jsx       # Dark/light theme switcher
 │   │   ├── pages/
+│   │   │   └── HomePage.jsx          # Main page (state & layout)
 │   │   └── services/
+│   │       └── api.js                # Axios API client
+│   ├── index.html
+│   ├── vite.config.js
+│   └── package.json
+│
+├── LICENSE
+├── PROJECT_CONTEXT.md
+└── README.md
 ```
 
 ---
 
-## 🛠️ Instalación
+## 🚀 Getting Started
 
-### 1. Clonar repositorio
+### Prerequisites
+
+- **Node.js** v18+ (v20 LTS recommended)
+- **npm** v9+
+
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/tu-usuario/xls-to-csv-app.git
-cd xls-to-csv-app
+git clone https://github.com/DanielEpinosaAlberti/xlstocsv.git
+cd xlstocsv
 ```
 
----
-
-### 2. Backend
+### 2. Install dependencies
 
 ```bash
+# Backend
 cd backend
 npm install
-npm run dev
-```
+mkdir -p uploads outputs
 
----
-
-### 3. Frontend
-
-```bash
-cd frontend
+# Frontend
+cd ../frontend
 npm install
+```
+
+### 3. Run in development mode
+
+Open two terminals:
+
+```bash
+# Terminal 1 — Backend (port 3000)
+cd backend
+npm run dev
+
+# Terminal 2 — Frontend (port 5173)
+cd frontend
 npm run dev
 ```
 
----
-
-## 📂 Crear carpetas necesarias
-
-Dentro de `backend/`:
-
-```bash
-mkdir uploads outputs
-```
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-## 🔌 API
+## 🔌 API Reference
 
-### POST `/api/convert`
+### `POST /api/analyze`
 
-Sube un archivo Excel y devuelve un CSV.
+Analyzes an Excel file and returns its structure.
 
-#### Request
+**Request:** `multipart/form-data` with a `file` field.
 
-* FormData:
-
-  * `file`: archivo `.xls` o `.xlsx`
-
-#### Response
+**Response:**
 
 ```json
 {
   "success": true,
-  "downloadUrl": "/outputs/file.csv"
+  "headers": ["Name", "Date", "Amount"],
+  "sampleRows": [{ "Name": "José", "Date": "25/03/2026", "Amount": "1.234,56" }],
+  "totalRows": 150
+}
+```
+
+### `POST /api/convert`
+
+Converts an Excel file to normalized CSV.
+
+**Request:** `multipart/form-data` with:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `file` | File | `.xls` or `.xlsx` file |
+| `options` | JSON string | Global normalization flags |
+| `columnRules` | JSON string | Per-column rule overrides |
+
+**Options object:**
+
+```json
+{
+  "removeAccents": true,
+  "normalizeHeaders": true,
+  "standardizeDates": true,
+  "normalizeNumbers": true,
+  "trimLowercase": true
+}
+```
+
+**Column rules object:**
+
+```json
+{
+  "Column Name": ["removeAccents", "trimLowercase"],
+  "Date Column": ["standardizeDates"],
+  "ID Column": ["none"]
+}
+```
+
+Available rules: `removeAccents`, `trimLowercase`, `uppercase`, `standardizeDates`, `normalizeNumbers`, `none`
+
+**Response:**
+
+```json
+{
+  "success": true,
+  "downloadUrl": "/outputs/filename_1711180800000.csv",
+  "preview": {
+    "headers": ["name", "date", "amount"],
+    "rows": [{ "name": "jose", "date": "2026-03-25", "amount": "1234.56" }],
+    "totalRows": 150
+  }
 }
 ```
 
 ---
 
-## 🧠 Roadmap
+## 🌐 Production Deployment
 
-### 🔹 v1 (actual)
+The backend serves the compiled frontend in production. No separate web server is needed for the React app.
 
-* Conversión básica Excel → CSV
-* Normalización de datos
+```bash
+# Build the frontend
+cd frontend
+npm run build
 
-### 🔹 v2
+# Start the backend (serves API + static frontend)
+cd ../backend
+npm start
+```
 
-* Drag & drop
-* Preview de datos
-* Validaciones avanzadas
+For a full deployment with **Nginx** as a reverse proxy and **PM2** as a process manager:
 
-### 🔹 v3
+```bash
+# Install PM2 globally
+sudo npm install -g pm2
 
-* Sistema de usuarios (JWT)
-* Historial de conversiones
-* API pública
+# Start the app
+cd backend
+pm2 start src/index.js --name xlstocsv
+pm2 save
+pm2 startup
+```
 
-### 🔹 v4 (SaaS)
+Nginx config:
 
-* Procesamiento asíncrono (colas)
-* Soporte archivos grandes
-* Planes de pago
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+    client_max_body_size 15M;
 
----
-
-## 💰 Monetización (futuro)
-
-* API de pago por uso
-* SaaS con límites de conversión
-* Integración con herramientas ETL
-
----
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas.
-
-1. Fork del proyecto
-2. Crea una rama (`feature/nueva-funcionalidad`)
-3. Commit
-4. Pull Request
-
----
-
-## 📄 Licencia
-
-Este proyecto está bajo la licencia **MIT**.
-
-Puedes usarlo, modificarlo y distribuirlo libremente.
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
 
 ---
 
-## 👨‍💻 Autor
+## 🗺️ Roadmap
 
-Proyecto desarrollado como aplicación de DAW (Desarrollo de Aplicaciones Web), con enfoque en escalabilidad hacia producto real.
-
----
-
-## ⭐ Motivación
-
-Los datos en Excel suelen ser inconsistentes y difíciles de importar directamente a bases de datos.
-
-Este proyecto busca convertir ese proceso en algo:
-
-* automático
-* fiable
-* reutilizable
+- [x] **v1** — Excel to CSV conversion with automatic normalization
+- [x] **v2 (partial)** — Drag & drop, data preview, per-column rules, dark theme
+- [ ] **v2 (remaining)** — Advanced validations, error recovery
+- [ ] **v3** — User authentication (JWT), conversion history, public API
+- [ ] **v4** — Async processing (job queues), large file support, SaaS features
 
 ---
 
-## 🚀 Futuro
+## 📄 License
 
-El objetivo es evolucionar este proyecto hacia:
-
-* herramienta profesional de transformación de datos
-* API escalable
-* producto SaaS
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Si te resulta útil, ⭐ dale una estrella al repo.
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/my-feature`)
+3. Commit your changes (`git commit -m 'Add my feature'`)
+4. Push to the branch (`git push origin feature/my-feature`)
+5. Open a Pull Request

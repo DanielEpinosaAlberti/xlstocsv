@@ -59,7 +59,7 @@ function HomePage() {
         const data = await analyzeFile(newFile);
         setColumns(data);
       } catch (err) {
-        setError(err.response?.data?.error || 'Error al analizar el archivo');
+        setError(err.response?.data?.error || 'Error analyzing the file');
       } finally {
         setAnalyzing(false);
       }
@@ -81,7 +81,7 @@ function HomePage() {
       setResult(data);
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
     } catch (err) {
-      setError(err.response?.data?.error || err.message || 'Error al convertir el archivo');
+      setError(err.response?.data?.error || err.message || 'Error converting the file');
     } finally {
       setLoading(false);
     }
@@ -126,14 +126,14 @@ function HomePage() {
         <div className="card">
           <div className="card-header">
             <span className="icon">📁</span>
-            Archivo
+            File
           </div>
           <div className="card-body">
             <FileUploader file={file} onFileChange={handleFileChange} onRemove={handleReset} />
             {analyzing && (
               <div className="analyzing-banner">
                 <span className="spinner spinner-sm" />
-                Analizando estructura del archivo...
+                Analyzing file structure...
               </div>
             )}
           </div>
@@ -144,17 +144,17 @@ function HomePage() {
           <div className="card column-info-card">
             <div className="card-header">
               <span className="icon">📋</span>
-              Estructura detectada
+              Detected structure
             </div>
             <div className="card-body">
               <div className="column-stats">
                 <div className="stat">
                   <span className="stat-value">{columns.headers.length}</span>
-                  <span className="stat-label">columnas</span>
+                  <span className="stat-label">columns</span>
                 </div>
                 <div className="stat">
                   <span className="stat-value">{columns.totalRows}</span>
-                  <span className="stat-label">filas</span>
+                  <span className="stat-label">rows</span>
                 </div>
               </div>
             </div>
@@ -165,11 +165,11 @@ function HomePage() {
         <div className="card">
           <div className="card-header">
             <span className="icon">⚙️</span>
-            Normalización global
+            Global normalization
           </div>
           <div className="quick-actions">
-            <button className="quick-action-btn" onClick={selectAll}>Activar todo</button>
-            <button className="quick-action-btn" onClick={selectNone}>Desactivar todo</button>
+            <button className="quick-action-btn" onClick={selectAll}>Enable all</button>
+            <button className="quick-action-btn" onClick={selectNone}>Disable all</button>
           </div>
           <div className="card-body" style={{ paddingTop: 0 }}>
             <NormalizationOptions options={options} onToggle={toggleOption} />
@@ -181,7 +181,7 @@ function HomePage() {
           <div className="card">
             <div className="card-header">
               <span className="icon">🎯</span>
-              Reglas por columna
+              Column rules
               <label className="column-rules-toggle">
                 <div className="toggle toggle-sm">
                   <input
@@ -192,15 +192,15 @@ function HomePage() {
                   <span className="slider" />
                 </div>
                 <span className="column-rules-toggle-label">
-                  {useColumnRules ? 'Activado' : 'Desactivado'}
+                  {useColumnRules ? 'Enabled' : 'Disabled'}
                 </span>
               </label>
             </div>
             {useColumnRules && (
               <div className="card-body card-body-flush">
                 <p className="column-rules-hint">
-                  Las reglas por columna reemplazan la normalización global para cada columna configurada.
-                  Las columnas sin reglas usarán la normalización global.
+                  Column rules override global normalization for each configured column.
+                  Columns without rules will use the global normalization.
                 </p>
                 <ColumnRulesEditor
                   headers={columns.headers}
@@ -222,10 +222,10 @@ function HomePage() {
           {loading ? (
             <>
               <span className="spinner" />
-              Procesando...
+              Processing...
             </>
           ) : (
-            <>🚀 Convertir a CSV</>
+            <>🚀 Convert to CSV</>
           )}
         </button>
 
@@ -240,7 +240,7 @@ function HomePage() {
       </main>
 
       <footer className="app-footer">
-        XLS to CSV Normalizer — Transforma tus datos de Excel en CSV limpio
+        XLS to CSV Normalizer — Transform your Excel data into clean CSV
       </footer>
     </div>
   );
