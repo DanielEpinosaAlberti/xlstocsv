@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const { processExcelToCSV, readExcelHeaders } = require('../services/conversionService');
 
 const DEFAULT_OPTIONS = {
@@ -18,8 +19,10 @@ const analyzeFile = async (req, res) => {
     }
 
     const result = readExcelHeaders(req.file.path);
+    fs.unlink(req.file.path, () => {});
     res.json({ success: true, ...result, tempFile: req.file.filename });
   } catch (error) {
+    if (req.file?.path) fs.unlink(req.file.path, () => {});
     res.status(500).json({ success: false, error: error.message });
   }
 };
@@ -61,6 +64,8 @@ const convert = async (req, res) => {
 
     const { normalizedHeaders, previewRows, totalRows } = await processExcelToCSV(inputPath, outputPath, options, columnRules);
 
+    fs.unlink(inputPath, () => {});
+
     res.json({
       success: true,
       downloadUrl: `/outputs/${outputFileName}`,
@@ -71,6 +76,7 @@ const convert = async (req, res) => {
       }
     });
   } catch (error) {
+    if (req.file?.path) fs.unlink(req.file.path, () => {});
     res.status(500).json({ success: false, error: error.message });
   }
 };
