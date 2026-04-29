@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Configuration for the global normalization options shown in the UI.
+ *
+ * @type {{ key: string, label: string, description: string, example: string }[]}
+ */
 const OPTIONS_CONFIG = [
   {
     key: 'removeAccents',
@@ -33,6 +38,14 @@ const OPTIONS_CONFIG = [
   },
 ];
 
+/**
+ * Renders the global normalization switches.
+ *
+ * @param {object} props - Component props.
+ * @param {Record<string, boolean>} props.options - Current option values.
+ * @param {(key: string) => void} props.onToggle - Toggle handler for a single option.
+ * @returns {JSX.Element}
+ */
 function NormalizationOptions({ options, onToggle }) {
   return (
     <div className="options-grid">

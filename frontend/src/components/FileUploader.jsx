@@ -1,11 +1,26 @@
 import React, { useState } from 'react';
 
+/**
+ * Formats a byte count into a human-readable size string.
+ *
+ * @param {number} bytes - File size in bytes.
+ * @returns {string} Formatted file size.
+ */
 function formatSize(bytes) {
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1048576) return `${(bytes / 1024).toFixed(1)} KB`;
   return `${(bytes / 1048576).toFixed(1)} MB`;
 }
 
+/**
+ * File upload control with drag-and-drop support.
+ *
+ * @param {object} props - Component props.
+ * @param {File|null} props.file - Current selected file.
+ * @param {(file: File) => void} props.onFileChange - Called when a file is selected.
+ * @param {() => void} props.onRemove - Called when the file is cleared.
+ * @returns {JSX.Element}
+ */
 function FileUploader({ file, onFileChange, onRemove }) {
   const [dragOver, setDragOver] = useState(false);
 

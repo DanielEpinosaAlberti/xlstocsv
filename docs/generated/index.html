@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XLS to CSV Normalizer - Generated API Documentation</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --surface: #ffffff;
+      --surface-2: #fff8ed;
+      --text: #1f2430;
+      --muted: #616a78;
+      --accent: #8b5a2b;
+      --accent-2: #2e6f5e;
+      --border: #d9cfbf;
+      --shadow: 0 18px 40px rgba(43, 28, 12, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    .hero,
+    .card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(217, 207, 191, 0.9);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero { padding: 32px; }
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(139, 90, 43, 0.10);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { line-height: 1.2; margin-top: 0; }
+    h1 {
+      font-size: clamp(2.2rem, 4.8vw, 4rem);
+      letter-spacing: -0.04em;
+      margin: 14px 0 14px;
+    }
+
+    p { margin-top: 0; }
+    .lead { max-width: 76ch; color: var(--muted); font-size: 1.06rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 18px;
+      align-self: start;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .toc h2 { font-size: 1rem; margin-bottom: 12px; }
+    .toc a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      padding: 7px 10px;
+      border-radius: 10px;
+      margin-bottom: 6px;
+    }
+    .toc a:hover { background: rgba(139, 90, 43, 0.08); }
+
+    .content { display: grid; gap: 18px; }
+    .card { padding: 24px; }
+    .card h2 { margin-bottom: 10px; }
+    .card h3 { margin: 18px 0 8px; color: var(--accent-2); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .pill {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+
+    .pill strong { display: block; color: var(--accent-2); margin-bottom: 4px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(217, 207, 191, 0.75);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f8efe2;
+      color: var(--accent-2);
+      font-size: 0.92rem;
+    }
+
+    code, pre {
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.93rem;
+    }
+
+    pre {
+      background: #1f2430;
+      color: #f8f2e9;
+      border-radius: 16px;
+      padding: 16px;
+      overflow: auto;
+      margin: 12px 0 0;
+    }
+
+    ul, ol { padding-left: 20px; }
+    .note {
+      margin-top: 14px;
+      background: #fff4df;
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 12px;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid, .two-col { grid-template-columns: 1fr; }
+      .toc { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero" id="top">
+      <span class="badge">Generated from JSDoc annotations</span>
+      <h1>XLS to CSV Normalizer</h1>
+      <p class="lead">
+        This documentation page summarizes the codebase using a JSDoc-style structure. It focuses on module responsibilities,
+        function contracts, request/response behavior, and data-processing flow across the backend and frontend.
+      </p>
+      <div class="two-col">
+        <div class="pill"><strong>Documentation standard</strong> JSDoc-inspired HTML reference</div>
+        <div class="pill"><strong>Source coverage</strong> backend/src and frontend/src</div>
+        <div class="pill"><strong>Main use</strong> Excel to CSV conversion and normalization</div>
+        <div class="pill"><strong>Output</strong> Downloadable CSV files + preview data</div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <aside class="toc">
+        <h2>Contents</h2>
+        <a href="#modules">Modules</a>
+        <a href="#backend">Backend reference</a>
+        <a href="#frontend">Frontend reference</a>
+        <a href="#api">API contracts</a>
+        <a href="#normalization">Normalization</a>
+        <a href="#flow">Data flow</a>
+        <a href="#setup">Setup and scripts</a>
+        <a href="#notes">Notes</a>
+      </aside>
+
+      <main class="content">
+        <section class="card" id="modules">
+          <h2>Documented modules</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>File</th>
+                <th>Documented responsibility</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>backend/src/index.js</td><td>Express app bootstrap, static serving, and cleanup job.</td></tr>
+              <tr><td>backend/src/routes/convertRoutes.js</td><td>Registers analysis and conversion routes.</td></tr>
+              <tr><td>backend/src/controllers/convertController.js</td><td>Request handlers for analyzing and converting spreadsheets.</td></tr>
+              <tr><td>backend/src/services/conversionService.js</td><td>Workbook parsing, normalization, and CSV generation.</td></tr>
+              <tr><td>backend/src/utils/normalizer.js</td><td>Header, cell, and column-rule normalization helpers.</td></tr>
+              <tr><td>backend/src/middlewares/uploadMiddleware.js</td><td>Multer storage, file filtering, and upload limits.</td></tr>
+              <tr><td>frontend/src/services/api.js</td><td>Axios API client for analyze and convert requests.</td></tr>
+              <tr><td>frontend/src/pages/HomePage.jsx</td><td>Main conversion workflow and state orchestration.</td></tr>
+              <tr><td>frontend/src/components/*.jsx</td><td>Upload, options, preview, result, and theme UI components.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card" id="backend">
+          <h2>Backend reference</h2>
+          <h3>backend/src/index.js</h3>
+          <p><strong>Purpose:</strong> initialize the server, mount routes, expose the output directory, and clean temporary files.</p>
+          <p><strong>Documented function:</strong> <code>cleanupDir(dir)</code></p>
+          <ul>
+            <li>Input: absolute directory path.</li>
+            <li>Behavior: removes files older than the configured retention window.</li>
+            <li>Side effect: deletes stale files from uploads and outputs.</li>
+          </ul>
+
+          <h3>backend/src/controllers/convertController.js</h3>
+          <p><strong>Documented functions:</strong></p>
+          <ul>
+            <li><code>analyzeFile(req, res)</code> returns headers, sample rows, and row count for the uploaded workbook.</li>
+            <li><code>convert(req, res)</code> parses global options and column rules, converts the file, and returns download metadata.</li>
+          </ul>
+
+          <h3>backend/src/services/conversionService.js</h3>
+          <p><strong>Documented functions:</strong></p>
+          <ul>
+            <li><code>readExcelHeaders(inputPath)</code> reads the first worksheet and extracts workbook metadata.</li>
+            <li><code>processExcelToCSV(inputPath, outputPath, options, columnRules)</code> writes the normalized CSV and returns preview data.</li>
+          </ul>
+        </section>
+
+        <section class="card" id="frontend">
+          <h2>Frontend reference</h2>
+          <h3>frontend/src/services/api.js</h3>
+          <p><strong>Documented functions:</strong></p>
+          <ul>
+            <li><code>analyzeFile(file)</code> uploads a spreadsheet for structural analysis.</li>
+            <li><code>uploadFile(file, options, columnRules)</code> uploads a spreadsheet for conversion.</li>
+          </ul>
+
+          <h3>frontend/src/components/FileUploader.jsx</h3>
+          <p><strong>Documented helpers:</strong> <code>formatSize(bytes)</code></p>
+          <ul>
+            <li>Formats file sizes for display in the upload card.</li>
+            <li>Supports drag-and-drop and standard file selection.</li>
+          </ul>
+
+          <h3>frontend/src/components/NormalizationOptions.jsx</h3>
+          <p><strong>Documented configuration:</strong> <code>OPTIONS_CONFIG</code></p>
+          <ul>
+            <li>Stores the labels, descriptions, and examples for each normalization toggle.</li>
+            <li>Renders the global conversion options exposed in the UI.</li>
+          </ul>
+
+          <h3>frontend/src/pages/HomePage.jsx</h3>
+          <p><strong>Documented component:</strong> <code>HomePage()</code></p>
+          <ul>
+            <li>Controls file selection, analysis, conversion, preview, and reset flow.</li>
+            <li>Coordinates global normalization state and per-column overrides.</li>
+          </ul>
+        </section>
+
+        <section class="card" id="api">
+          <h2>API contracts</h2>
+          <h3>POST /api/analyze</h3>
+          <p>Accepts multipart form data with a <code>file</code> field and returns workbook metadata.</p>
+          <pre>{
+  "success": true,
+  "headers": ["Name", "Date", "Amount"],
+  "sampleRows": [{ "Name": "José", "Date": "25/03/2026", "Amount": "1.234,56" }],
+  "totalRows": 150
+}</pre>
+
+          <h3>POST /api/convert</h3>
+          <p>Accepts a spreadsheet file plus JSON-encoded normalization options and column rules.</p>
+          <pre>{
+  "success": true,
+  "downloadUrl": "/outputs/filename_1711180800000.csv",
+  "preview": {
+    "headers": ["name", "date", "amount"],
+    "rows": [{ "name": "jose", "date": "2026-03-25", "amount": "1234.56" }],
+    "totalRows": 150
+  }
+}</pre>
+        </section>
+
+        <section class="card" id="normalization">
+          <h2>Normalization</h2>
+          <p>The documented utility functions transform headers and values before CSV export.</p>
+          <ul>
+            <li><code>normalizeHeader(header)</code> converts headers to snake_case and removes accents.</li>
+            <li><code>normalizeValue(value, options)</code> applies global text, date, accent, and number normalization.</li>
+            <li><code>applyColumnRules(value, rules)</code> applies per-column overrides.</li>
+            <li><code>removeAccents(str)</code> strips accent marks from a string.</li>
+          </ul>
+          <div class="note">
+            Per-column rules take precedence over the global normalization flags for the columns that are explicitly configured.
+          </div>
+        </section>
+
+        <section class="card" id="flow">
+          <h2>Data flow</h2>
+          <ol>
+            <li>User uploads a spreadsheet in the frontend.</li>
+            <li>The backend stores the file temporarily through Multer.</li>
+            <li>The analyze endpoint reads headers and sample rows.</li>
+            <li>The convert endpoint processes rows and writes a CSV file.</li>
+            <li>The frontend receives preview data and a download URL.</li>
+            <li>Temporary files are removed after processing and old files are cleaned on an interval.</li>
+          </ol>
+        </section>
+
+        <section class="card" id="setup">
+          <h2>Setup and scripts</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Location</th>
+                <th>Command</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Root</td><td><code>npm run docs</code></td></tr>
+              <tr><td>Backend</td><td><code>npm run dev</code> / <code>npm start</code></td></tr>
+              <tr><td>Frontend</td><td><code>npm run dev</code> / <code>npm run build</code></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card" id="notes">
+          <h2>Notes</h2>
+          <p>
+            This page is a static HTML summary aligned with the JSDoc annotations added to the source files. If you want to fully automate
+            the generation step in this environment, the next requirement is a working Node.js installation so the JSDoc CLI can be executed.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <div class="footer">Generated documentation for XLS to CSV Normalizer</div>
+  </div>
+</body>
+</html>

@@ -15,6 +15,11 @@ const DEFAULT_OPTIONS = {
   trimLowercase: true,
 };
 
+/**
+ * Main page for the conversion workflow.
+ *
+ * @returns {JSX.Element}
+ */
 function HomePage() {
   const [file, setFile] = useState(null);
   const [options, setOptions] = useState(DEFAULT_OPTIONS);

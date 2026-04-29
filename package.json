@@ -1,0 +1,12 @@
+{
+  "name": "xlstocsv-docs",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Documentation tooling for the XLS to CSV Normalizer project",
+  "scripts": {
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.4"
+  }
+}

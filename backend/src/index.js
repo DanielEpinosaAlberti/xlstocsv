@@ -29,6 +29,12 @@ const OUTPUTS_DIR = path.join(__dirname, '..', 'outputs');
 const UPLOADS_DIR = path.join(__dirname, '..', 'uploads');
 const MAX_AGE_MS = 10 * 60 * 1000;
 
+/**
+ * Removes files older than the configured retention window from a directory.
+ *
+ * @param {string} dir - Absolute directory path to clean.
+ * @returns {void}
+ */
 function cleanupDir(dir) {
   fs.readdir(dir, (err, files) => {
     if (err) return;

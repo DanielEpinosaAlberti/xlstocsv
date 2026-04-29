@@ -12,6 +12,14 @@ const DEFAULT_OPTIONS = {
 
 const VALID_RULES = ['removeAccents', 'standardizeDates', 'normalizeNumbers', 'trimLowercase', 'uppercase', 'none'];
 
+/**
+ * Analyzes an uploaded Excel file and returns its detected structure.
+ *
+ * @async
+ * @param {import('express').Request} req - Express request containing the uploaded file.
+ * @param {import('express').Response} res - Express response used to send the analysis result.
+ * @returns {Promise<void>}
+ */
 const analyzeFile = async (req, res) => {
   try {
     if (!req.file) {
@@ -27,6 +35,14 @@ const analyzeFile = async (req, res) => {
   }
 };
 
+/**
+ * Converts an uploaded Excel file into a normalized CSV file.
+ *
+ * @async
+ * @param {import('express').Request} req - Express request with file, options, and column rules.
+ * @param {import('express').Response} res - Express response used to return the conversion result.
+ * @returns {Promise<void>}
+ */
 const convert = async (req, res) => {
   try {
     if (!req.file) {

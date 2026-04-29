@@ -1,5 +1,8 @@
 /**
- * Normaliza un encabezado: quita tildes, espacios → _, lowercase
+ * Normalizes a column header by removing accents, trimming whitespace, and converting it to snake_case.
+ *
+ * @param {string} header - Raw column header.
+ * @returns {string} Normalized header.
  */
 const normalizeHeader = (header) => {
   return removeAccents(String(header))
@@ -10,7 +13,11 @@ const normalizeHeader = (header) => {
 };
 
 /**
- * Normaliza un valor de celda según las opciones seleccionadas
+ * Normalizes a cell value using the selected global options.
+ *
+ * @param {*} value - Cell value to normalize.
+ * @param {object} options - Normalization flags.
+ * @returns {*} Normalized value.
  */
 const normalizeValue = (value, options = {}) => {
   if (value === null || value === undefined || value === '') return '';
@@ -52,7 +59,11 @@ const normalizeValue = (value, options = {}) => {
 };
 
 /**
- * Aplica reglas específicas de columna a un valor
+ * Applies column-specific rules to a cell value.
+ *
+ * @param {*} value - Cell value to transform.
+ * @param {string[]} rules - Column rules to apply.
+ * @returns {*} Transformed value.
  */
 const applyColumnRules = (value, rules) => {
   if (value === null || value === undefined || value === '') return '';
@@ -98,12 +109,13 @@ const applyColumnRules = (value, rules) => {
 };
 
 /**
- * Elimina tildes/acentos de un string
+ * Removes accents from a string.
+ *
+ * @param {string} str - Input string.
+ * @returns {string} String without accent marks.
  */
 const removeAccents = (str) => {
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 };
 
 module.exports = { normalizeHeader, normalizeValue, applyColumnRules, removeAccents };
-
-module.exports = { normalizeHeader, normalizeValue, removeAccents };
